@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chainlit-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chainlit-app
+  template:
+    metadata:
+      labels:
+        app: chainlit-app
+    spec:
+      containers:
+      - name: chainlit-app
+        image: chainlit-app:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8000
+        resources:
+          requests:
+            cpu: "200m"
+          limits:
+            cpu: "400m"
